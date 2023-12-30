@@ -1,0 +1,180 @@
+<form
+  (ngSubmit)="send_notify()"
+  class="flex flex-col w-1/2"
+  [formGroup]="note_form"
+>
+  <mat-form-field *ngIf="one_Usermode" appearance="outline">
+    <mat-label>المستخدم </mat-label>
+    <input
+      matInput
+      placeholder="المستخدم"
+      formControlName="user"
+      [matAutocomplete]="auto"
+    />
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="display_with_fn">
+      <mat-option
+        *ngFor="let user of users | userFilter : note_form.get('user').value"
+        [value]="user"
+        >{{ user.username }}
+      </mat-option>
+    </mat-autocomplete>
+    <mat-error *ngIf="note_form.get('user').errors">
+      {{
+        note_form.get("user").errors["usernotfound"]
+          ? "هذالمستخدم غير موجود "
+          : " "
+      }}
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="" appearance="outline">
+    <mat-label>العنوان</mat-label>
+    <input matInput type="text" placeholder="العنوان" formControlName="title" />
+    <mat-error *ngIf="note_form.get('title').errors">
+      {{
+        note_form.get("title").errors["minlength"]
+          ? "يجب ان يكون اكثر من 5 احرف"
+          : ""
+      }}
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>الوصف</mat-label>
+    <input
+      matInput
+      type="text"
+      placeholder="الوصف"
+      formControlName="Description"
+    />
+    <mat-error *ngIf="note_form.get('Description').errors">
+      {{
+        note_form.get("Description").errors["minlength"]
+          ? "يجب ان يكون اكثر من 5 احرف"
+          : ""
+      }}
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>النوع</mat-label>
+    <mat-select formControlName="Action_Type">
+      <mat-select-trigger>{{
+        note_form.get("Action_Type")?.value | actionText
+      }}</mat-select-trigger>
+      <mat-option
+        *ngFor="let action_type of action_types"
+        [value]="action_type.id"
+      >
+        {{ action_type.text }}</mat-option
+      >
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field
+    appearance="outline"
+    *ngIf="!(note_form.get('Action_Type')?.value == 1)"
+  >
+    <mat-label>{{
+      note_form.get("Action_Type")?.value | actionText
+    }}</mat-label>
+
+    <mat-select
+      formControlName="Action_Path"
+      *ngIf="note_form.get('Action_Type')?.value == 3"
+    >
+      <mat-select-trigger>
+        {{ note_form.get("Action_Path")?.value | qscreen }}</mat-select-trigger
+      >
+      <mat-option
+        *ngFor="let qayedha_secreen of qyaedha_screens"
+        [value]="qayedha_secreen.path"
+      >
+        {{ qayedha_secreen.label }}</mat-option
+      >
+    </mat-select>
+
+    <input
+      *ngIf="!(note_form.get('Action_Type')?.value == 3)"
+      matInput
+      type="text"
+      [placeholder]="note_form.get('Action_Type')?.value | actionText"
+      formControlName="Action_Path"
+    />
+    <mat-error *ngIf="note_form.get('Action_Path').errors">
+      {{
+        note_form.get("Action_Path").errors["pattern"]
+          ? "يجب ان يحتوي علي لينك "
+          : ""
+      }}
+    </mat-error>
+  </mat-form-field>
+  <fieldset
+    class="border relative border-stone-400 rounded py-4 px-2 mb-4"
+    *ngIf="note_form.get('Action_Type')?.value == 4"
+  >
+    <legend class="text-sm absolute right-4 -top-3 text-stone-400 bg-white">
+      صورة
+    </legend>
+    <div class="flex flex-col items-center space-y-3">
+    <div class="flex space-x-2">
+      <input class="hidden" type="text" formControlName="image" />
+
+      <button
+        mat-mini-fab
+        type="button"
+        color="primary"
+        [disabled]="file.value"
+        (click)="fileinput.click()"
+      >
+        <mat-icon>add </mat-icon>
+      </button>
+      <button
+        class="flex justify-center items-center"
+        (click)="onuploadimage(fileinput)"
+        type="button"
+        mat-mini-fab
+        [disabled]="!file.value"
+        color="primary"
+      >
+        <div *ngIf="note_form.get('image').value">
+          <mat-icon>done</mat-icon>
+        </div>
+
+        <div *ngIf="!note_form.get('image').value && url_ready">
+          <mat-icon>arrow_upward</mat-icon>
+        </div>
+
+        <div *ngIf="!note_form.get('image').value && !url_ready">
+          <app-loader></app-loader>
+        </div>
+      </button>
+      <div *ngIf="file.value" class="flex justify-between items-center ">
+      <button class="ml-4" type="button" mat-mini-fab color="warn" (click)="clearfile()">
+        <mat-icon>close </mat-icon>
+      </button>
+        <span>{{ file.value ?  (file.value|imageName ): '' }}</span>
+      </div>
+      
+      <input
+      type="file"
+      class="hidden"
+      [formControl]="file"
+      accept="image/* "
+      id="image"
+      (change)="select_image($event)"
+      #fileinput
+      />
+      
+    </div>
+    <img  *ngIf="file.value" [src]="url"  class=" w-1/2">
+  </div>
+  </fieldset>
+
+  <button
+    mat-raised-button
+    [disabled]="!note_form.valid"
+    color="primary"
+    type="submit"
+  >
+    Send
+  </button>
+</form>

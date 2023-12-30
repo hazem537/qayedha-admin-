@@ -1,0 +1,4 @@
+.mat-icon{
+    @apply h-[40px] w-[40px] text-4xl md:text-5xl md:w-[75px] md:h-[75px];
+    
+}

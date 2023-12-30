@@ -1,0 +1,13 @@
+.list-item {
+    @apply flex  items-center text-white  bg-slate-500 m-1 px-5 py-2 border-2 rounded-xl text-right border-teal-600 shadow ;
+}
+
+mat-list-item{
+    /* @apply font-body bg-slate-500  mb-1 */
+}
+span[matListItemTitle]{
+    @apply font-body
+}
+.active span, .active mat-icon{
+    @apply text-blue-600
+}

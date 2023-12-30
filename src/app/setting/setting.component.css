@@ -1,0 +1,9 @@
+mat-card, mat-card-title,mat-card-content,button {
+    @apply font-body;
+}
+mat-card{
+ @apply p-4
+}
+mat-icon{
+    @apply ml-4
+}

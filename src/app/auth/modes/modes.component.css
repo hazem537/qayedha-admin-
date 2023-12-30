@@ -1,0 +1,20 @@
+mat-button-toggle {
+  @apply p-2 md:p-4 ml-2 shadow-md  rounded-xl font-body w-1/2 transition duration-300; 
+}
+.hide_icon{
+    @apply hidden
+}
+.show_icon{
+    @apply block
+}
+select_icon{
+    @apply text-white bg-white
+} 
+
+.mat-button-toggle-checked.mat-button-toggle-appearance-standard {
+  @apply text-lg bg-blue-700 text-white md:text-xl ;
+}
+
+mat-button-toggle-group {   
+  @apply border-none p-3 w-full;
+}

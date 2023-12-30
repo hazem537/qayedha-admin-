@@ -1,0 +1,6 @@
+.label-text{
+}
+  .mdc-tab__text-label{
+    @apply font-body font-bold   
+
+}

@@ -1,0 +1,17 @@
+<div [formGroup]="server">
+  <mat-button-toggle-group
+    name="mode"
+    aria-label="Font Style"
+    formControlName="mode"
+  >
+    <mat-button-toggle *ngFor="let mode of modes" [value]="mode" #toggle>
+      <div class="flex items-center">
+        <!-- <i
+          class="fa-solid fa-square-check ml-2 rounded-full"
+          [ngClass]="{ hide_icon: !toggle.checked, show_icon: toggle.checked }"
+        ></i> -->
+        {{ mode.name }}
+      </div>
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+</div>

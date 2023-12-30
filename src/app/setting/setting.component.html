@@ -1,0 +1,36 @@
+<mat-card>
+<mat-card-header>
+<mat-card-title>
+    <div class="flex items-center mb-4">
+        <mat-icon>admin_panel_settings</mat-icon> 
+        <span>اعدادت الأدمن</span>
+</div>
+</mat-card-title>
+</mat-card-header>
+<mat-card-content>
+    <button mat-raised-button color="warn" (click)="CPDialog()"> تغيير كلمة المرور </button>
+</mat-card-content>
+</mat-card>
+
+<!-- <mat-card>
+    <mat-card-header>
+    <mat-card-title>
+        <div class="flex items-center mb-4">
+            <mat-icon>display_settings</mat-icon> 
+            <span>اعدادت السيرفر</span>
+    </div>
+    </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-form-field appearance="outline">
+        <mat-label>السيرفر الحالي</mat-label>
+        <mat-select [formControl]="selectedmode" (valueChange)="onchangeserver($event)">
+            <mat-select-trigger>{{selectedmode?.value?.name}}</mat-select-trigger>
+            <mat-option *ngFor="let mode of modes" [value]="mode" >
+                {{mode.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+        {{modes|json}}
+    </mat-card-content>
+    </mat-card> -->

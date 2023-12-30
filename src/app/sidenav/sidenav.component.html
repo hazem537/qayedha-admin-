@@ -1,0 +1,28 @@
+
+<mat-list>
+  <mat-list-item  [routerLinkActiveOptions]="{exact:true}" routerLinkActive='active' routerLink="/" #item >
+
+    <span matListItemIcon><mat-icon>home</mat-icon></span>
+    <span matListItemTitle> الرئيسة</span>
+  </mat-list-item >
+  <mat-list-item  routerLinkActive='active' routerLink="/codes">
+    <span matListItemIcon><mat-icon>discount</mat-icon></span>
+    <span matListItemTitle> الأكواد</span>
+  </mat-list-item>
+  <mat-list-item  routerLinkActive='active' routerLink="/influncer-codes">
+    <span matListItemIcon><mat-icon>stars</mat-icon></span>
+    <span matListItemTitle> أكواد المؤثرين </span>
+  </mat-list-item>
+  <!-- <mat-list-item>
+        <span matListItemIcon><mat-icon>book</mat-icon></span>
+    <span matListItemTitle> الكتاب</span>
+  </mat-list-item> -->
+  <mat-list-item  routerLinkActive='active' routerLink="notification">
+    <span matListItemIcon><mat-icon>notifications</mat-icon></span>
+    <span matListItemTitle > الأشعارات</span>
+  </mat-list-item>
+  <mat-list-item  routerLinkActive='active' routerLink="setting">
+    <span matListItemIcon><mat-icon>settings</mat-icon></span>
+    <span matListItemTitle >الأعدادت</span>
+  </mat-list-item>
+</mat-list>

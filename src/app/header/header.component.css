@@ -1,0 +1,7 @@
+mat-toolbar{
+    @apply flex justify-between items-center font-body sticky;
+    
+}
+button{
+    @apply font-body
+}

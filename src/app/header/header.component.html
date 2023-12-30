@@ -1,0 +1,15 @@
+<mat-toolbar color="primary" >
+    <div class="flex items-center">
+    <button  mat-icon-button (click)="toggleNav.emit()" *ngIf="is_auth">
+      <mat-icon> {{ status ? "close" : "menu" }}</mat-icon>
+    </button>
+    <span class="cursor-pointer" routerLink="/">قيدها</span>
+    </div>
+
+    <div class="flex  items-center ">
+        <mat-icon>{{mode.icon}}</mat-icon>
+        <button  mat-raised-button color="primary" routerLink="/auth" *ngIf="!is_auth" >تسجيل الدخول</button>
+        <button  mat-raised-button color="accent" *ngIf="is_auth"  (click)="onlogout()">الخروج</button>
+
+    </div>
+</mat-toolbar>

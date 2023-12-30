@@ -1,0 +1,29 @@
+mat-card{
+    @apply w-3/4 mx-auto mt-5
+}
+form{
+    @apply flex flex-col 
+}
+.form-field{
+    @apply mx-auto w-full flex flex-col space-y-2 md:flex-row  md:space-y-0 md:space-x-5 text-center placeholder:text-center
+ }
+ .form-action
+ {
+    @apply w-full  flex justify-center items-center
+ }
+ button{
+    @apply px-10 py-2 font-body
+ }
+ 
+mat-form-field{
+    @apply w-full 
+}
+.checkDevelopermode{
+    @apply text-lg
+}
+mat-radio-button  {
+    @apply p-4 bg-teal-500  
+}
+mat-label{
+   @apply font-body
+}

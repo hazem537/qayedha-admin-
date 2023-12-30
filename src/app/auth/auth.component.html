@@ -1,0 +1,42 @@
+<mat-card>
+  <mat-card-content>
+    <div class="text-3xl font-body mb-2">تسجيل الدخول </div>
+    <form (ngSubmit)="onlogin()" [formGroup]="loginForm">
+      <div class="form-input">
+        <mat-form-field appearance="outline">
+          <mat-label>اسم المستخدم</mat-label>
+          <input
+            type="text"
+            matInput
+            name="username"
+            formControlName="username"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>كلمة المرور </mat-label>
+          <input
+            matInput
+            name="password"
+            formControlName="password"
+            [type]="'password'"
+          />
+        </mat-form-field>
+
+        <app-modes formGroupname="server" ></app-modes>
+
+      </div>
+      <div class="form-action">
+        <button
+          mat-raised-button
+          color="primary"
+          value="Login"
+          type="submit"
+          [disabled]="!loginForm.valid"
+        >
+          تسجيل الدخول 
+        </button>
+        
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,79 @@
+<mat-card class="p-6 flex flex-col items-center">
+  <span class="text-2xl"> قيدها ادمن لأدارة برنامج قيدها </span>
+  <section class="flexflex-col space-y-4 w-full mt-5">
+    <!-- row -->
+    <div class="w-full flex flex-col space-y-3 md:space-y-0 md:flex-row">
+      <!-- item -->
+      <div
+      routerLink="/codes"
+        class="p-3 group w-full md:w-1/2 flex justify-evenly items-center border-2 border-blue-400 rounded-xl mx-2 hover:bg-blue-700 hover:text-white transition-colors"
+      >
+        <div class="flex flex-col items-center justify-center">
+          <span class="text-xl sm:text-md"> الأكواد</span>
+          <p class="hidden sm:block text-center">
+            خدمة ارسال الأكواد للمستخدمين
+          </p>
+        </div>
+        <mat-icon
+          class="opacity-0 hidden translate-y-4 group-hover:translate-y-0 group-hover:opacity-100 group-hover:block duration-300"
+        >
+          discount</mat-icon
+        >
+      </div>
+      <div
+        dir="ltr"
+      routerLink="/influncer-codes"
+
+        class="group w-full md:w-1/2 flex justify-evenly items-center border-2 border-blue-400 rounded-xl p-3 mx-2 hover:bg-blue-700 hover:text-white transition-colors"
+      >
+        <div class="flex flex-col items-center justify-center">
+          <span class="text-xl sm:text-md">أكواد المؤثرين </span>
+          <p class="hidden sm:block text-center">
+            خدمة الأكواد لمن يصل صوتهم للمستخدمين الجدد
+          </p>
+        </div>
+        <mat-icon
+          class="opacity-0 hidden translate-y-4 group-hover:translate-y-0 group-hover:opacity-100 group-hover:block duration-300"
+        >
+          stars</mat-icon
+        >
+      </div>
+    </div>
+
+    <!-- row -->
+    <div class="w-full flex flex-col space-y-3 md:space-y-0 md:flex-row">
+      <!-- item -->
+      <div
+      routerLink="/notification"
+        class="p-3 group w-full md:w-1/2 flex justify-evenly items-center border-2 border-blue-400 rounded-xl mx-2 hover:bg-blue-700 hover:text-white transition-colors"
+      >
+        <div class="flex flex-col items-center justify-center">
+          <span class="text-xl sm:text-md">الأشعارات</span>
+          <p class="hidden sm:block text-center">
+            خدمة ارسال الأشعارات للمستخدمين
+          </p>
+        </div>
+        <mat-icon
+          class="opacity-0 hidden translate-y-4 group-hover:translate-y-0 group-hover:opacity-100 group-hover:block duration-300"
+        >
+          notifications</mat-icon
+        >
+      </div>
+      <div
+      routerLink="setting"
+        dir="ltr"
+        class="group w-full md:w-1/2 flex justify-evenly items-center border-2 border-blue-400 rounded-xl p-3 mx-2 hover:bg-blue-700 hover:text-white transition-colors"
+      >
+        <div class="flex flex-col items-center justify-center">
+          <span class="text-xl sm:text-md">الأعددات </span>
+          <p class="hidden sm:block text-center">خدمة التعديل علي اعدادات الأدمن</p>
+        </div>
+        <mat-icon
+          class="opacity-0 hidden translate-y-4 group-hover:translate-y-0 group-hover:opacity-100 group-hover:block duration-300"
+        >
+          settings</mat-icon
+        >
+      </div>
+    </div>
+  </section>
+</mat-card>

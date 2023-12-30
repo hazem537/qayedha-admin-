@@ -1,0 +1,87 @@
+<mat-card class="w-full p-6 flex justify-center items-center">
+  <form
+    class="flex flex-col w-1/2"
+    (ngSubmit)="onsubmit()"
+    [formGroup]="code_form"
+  >
+    <mat-form-field appearance="outline">
+      <mat-label>اسم الكود</mat-label>
+      <input
+        matInput
+        name="code_name"
+        type="text"
+        placeholder="الكود"
+        formControlName="code_name"
+      />
+      <mat-error *ngIf="code_form.get('code_name').errors">
+        {{
+          code_form.get("code_name").errors["minlength"]
+            ? "يجب ان يكون اكثر من 5 احرف "
+            : ""
+        }}
+        {{
+          code_form.get("code_name").errors["maxlength"]
+            ? "يجب ان يكون اقل من 15 حرف "
+            : ""
+        }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>عدد الايام</mat-label>
+      <input
+        matInput
+        appMinValue
+        type="number"
+        formControlName="duration"
+        placeholder="عدد الايام"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>المستخدم</mat-label>
+      <input
+        placehpolde="المستخدم"
+        matInput
+        formControlName="user"
+        [matAutocomplete]="auto"
+      />
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="showusername">
+        <mat-option
+          *ngFor="let user of users | userFilter : code_form.get('user').value"
+          [value]="user"
+          >{{ user.username }}</mat-option
+        >
+      </mat-autocomplete>
+      <mat-error *ngIf="code_form.get('user').errors">
+        {{
+          code_form.get("user").errors["notFoundUser"]
+            ? "هذ المستخدم غير موجود "
+            : ""
+        }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>تاريخ انتهاء الصلاحية </mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        formControlName="expire_date"
+        [min]="current_date"
+      />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="!code_form.valid"
+      type="submit"
+    >
+      اضافة
+    </button>
+  </form>
+</mat-card>

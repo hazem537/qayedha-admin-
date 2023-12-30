@@ -1,0 +1,57 @@
+<mat-card class="items-center">
+  <form
+    #form
+      (ngSubmit)="onsubmitform()"
+    [formGroup]="influncer_code_form"
+    class="flex flex-col mt-5 w-1/2 p-6"
+  >
+    <mat-form-field appearance="outline">
+      <mat-label>اسم الكود</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="code"
+        placeholder="اسم الكود"
+      />
+    
+        
+    <mat-error *ngIf="!!influncer_code_form.get('code')?.errors">
+    {{ !!influncer_code_form.get('code')?.errors['minlength'] ?  " يجب ان يكون اكثر من 3 احرف" : "" }}
+    {{ !!influncer_code_form.get('code')?.errors['maxlength'] ?  " يجب ان يكون اقل من 15 حرف" : "" }}     
+            </mat-error>
+
+         
+        
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>عدد الايام </mat-label>
+      <input
+        matInput
+        appMinValue
+        type="number"
+        formControlName="NumberOfDays"
+        placeholder="عدد الايام "
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label> تاريخ انتهاء صلاحية </mat-label>
+      <input matInput [matDatepicker]="picker" min="{{ current_date |date :'yyyy-MM-dd'}}"  formControlName="expireAt" />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <div class="flex justify-center">
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="!influncer_code_form.valid"
+      >
+        أضافة
+      </button>
+    </div>
+  </form>
+</mat-card>
